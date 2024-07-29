@@ -1,59 +1,156 @@
+// src/pages/category/MovieCard.tsx
+import React, { useState } from 'react';
 import * as C from "./stiled";
-import React from 'react';
 import { CartItem } from "../../types/CardType";
-import { addToCart } from '../../service/movieService'; // Importe a função addToCart
 
 interface MovieCardProps {
   id: number;
   title: string;
-  price: number;
-  image: string;
-  nomeFantasia:string;
-  initialDate:string;
-  atividade:string;
-  endereco:string;
-  tel1:string;
-  tel2:string;
-  email:string
-  situaçaoCadastral:string
-  onAddToCart: () => void; // Ajuste para que onAddToCart não receba parâmetros
+  nomeFantasia: string;
+  initialDate: string;
+  atividade: string;
+  endereco: string;
+  tel1: string;
+  tel2: string;
+  email: string;
+  situacaoCadastral: string;
+
 }
-  
 
-export const MovieCard: React.FC<MovieCardProps> = ({ id, title,price,image,email,nomeFantasia,initialDate,situaçaoCadastral,atividade,endereco,tel1,tel2, onAddToCart  }) => {
-  const handleAddToCart = () => {
-    const item: CartItem = { id, title, price, image,nomeFantasia,initialDate,email,situaçaoCadastral,atividade,endereco,tel1,tel2}; // Cria o objeto CartItem com os dados do filme
-    // addToCart(item); // Chama a função do serviço para adicionar ao carrinho
-    console.log('Item adicionado:', item); // Para verificar no console
+export const MovieCard: React.FC<MovieCardProps> = ({
+  title,
+  id,
+  nomeFantasia,
+  initialDate,
+  atividade,
+  endereco,
+  tel1,
+  tel2,
+  email,
+  situacaoCadastral,
+}) => {
+  const [formData, setFormData] = useState({
+    title,
+    nomeFantasia,
+    initialDate,
+    atividade,
+    endereco,
+    tel1,
+    tel2,
+    email,
+    situacaoCadastral,
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
-  
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Dados do formulário:', formData);
+  };
+
   return (
-   
     <C.Card>
-           <C.MovieImage src={image} alt={title} />
-      {/* <img src={image} alt={title} /> */}
-      <C.Title>{title}</C.Title>
-      <C.Title>{nomeFantasia}</C.Title>
-      <C.Title>{situaçaoCadastral}</C.Title>
-      <C.Title>{initialDate}</C.Title>
-      <C.Title>{atividade}</C.Title>
+      <form onSubmit={handleSubmit}>
+        <C.Title>Informações</C.Title>
+
+        <label>
+          Título:
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+          />
+        </label>
 
 
-      <C.Title>{tel1}</C.Title>
-      <C.Title>{tel2}</C.Title>
-      <C.Title>{email}</C.Title>
+        <label>
+          Nome Fantasia:
+          <input
+            type="text"
+            name="nomeFantasia"
+            value={formData.nomeFantasia}
+            onChange={handleChange}
+          />
+        </label>
 
+        <label>
+          Data de Inicialização:
+          <input
+            type="date"
+            name="initialDate"
+            value={formData.initialDate}
+            onChange={handleChange}
+          />
+        </label>
 
-      
-      <C.Title>{initialDate}</C.Title>
+        <label>
+          Atividade:
+          <input
+            type="text"
+            name="atividade"
+            value={formData.atividade}
+            onChange={handleChange}
+          />
+        </label>
 
+        <label>
+          Endereço:
+          <input
+            type="text"
+            name="endereco"
+            value={formData.endereco}
+            onChange={handleChange}
+          />
+        </label>
 
-      <C.Footer>
-        <C.CartIcon />
-        <C.AddToCartButton onClick={handleAddToCart}>Adicionar ao carrinho</C.AddToCartButton>
+        <label>
+          Telefone 1:
+          <input
+            type="text"
+            name="tel1"
+            value={formData.tel1}
+            onChange={handleChange}
+          />
+        </label>
 
-      </C.Footer>
+        <label>
+          Telefone 2:
+          <input
+            type="text"
+            name="tel2"
+            value={formData.tel2}
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Situação Cadastral:
+          <input
+            type="text"
+            name="situacaoCadastral"
+            value={formData.situacaoCadastral}
+            onChange={handleChange}
+          />
+        </label>
+
+        <C.Footer>
+          <C.AddToCartButton type="submit">Salvar</C.AddToCartButton>
+        </C.Footer>
+      </form>
     </C.Card>
-     
   );
 };

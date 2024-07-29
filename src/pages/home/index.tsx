@@ -46,6 +46,7 @@ export const Home: React.FC = () => {
                 {error && <div>{error}</div>}
                 {cnpjData && (
                     <MovieCard
+               
                         key={cnpjData.cnpj}
                         id={0} // ID fictício, ajuste conforme necessário
                         email={cnpjData.email}
@@ -54,13 +55,11 @@ export const Home: React.FC = () => {
                         tel1={cnpjData.ddd_telefone_1}
                         endereco={cnpjData.logradouro}
                         atividade={cnpjData.cnae_fiscal_descricao}
-                        situaçaoCadastral={cnpjData.descricao_situacao_cadastral}
+                        situacaoCadastral={cnpjData.descricao_situacao_cadastral}
                         initialDate={cnpjData.data_inicio_atividade}
                         nomeFantasia={cnpjData.nome_fantasia}
                         title={cnpjData.razao_social || 'Nome não disponível'}
-                        price={0} // Valor fictício, ajuste conforme necessário
-                        image="https://via.placeholder.com/150" // Imagem fictícia
-                        onAddToCart={() => {}}
+
                     />
                 )}
                 

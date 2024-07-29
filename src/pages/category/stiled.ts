@@ -1,24 +1,13 @@
+// src/pages/category/stiled.ts
 import styled from 'styled-components';
-import React from 'react';
 
- export const Card = styled.div`
+export const Card = styled.div`
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  width: 250px;
-  text-align: center;
- 
-  
-`;
-export const StyledDiv = styled.div`
-    background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  width: 250px;
-  text-align: center;
-  
+  width: 100%; /* Ajuste a largura do cartão conforme necessário */
+  text-align: left; /* Alinhamento do texto à esquerda para o formulário */
 `;
 
 export const MovieImage = styled.img`
@@ -57,8 +46,19 @@ export const AddToCartButton = styled.button`
   }
 `;
 
-
-export const CartIcon = styled.span`
-  margin-right: 8px;
+// Adicione regras de estilo para o formulário e os inputs
+export const Input = styled.input`
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
 `;
 
+export const Label = styled.label`
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+`;
