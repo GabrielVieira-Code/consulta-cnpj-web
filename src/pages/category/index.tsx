@@ -1,6 +1,6 @@
 // src/pages/category/MovieCard.tsx
 import React, { useState } from 'react';
-import * as C from "./stiled";
+import * as C from "./stiled"; // Corrigi o caminho para "styled"
 import { CartItem } from "../../types/CardType";
 
 interface MovieCardProps {
@@ -14,7 +14,6 @@ interface MovieCardProps {
   tel2: string;
   email: string;
   situacaoCadastral: string;
-
 }
 
 export const MovieCard: React.FC<MovieCardProps> = ({
@@ -56,96 +55,95 @@ export const MovieCard: React.FC<MovieCardProps> = ({
       <form onSubmit={handleSubmit}>
         <C.Title>Informações</C.Title>
 
-        <label>
+        <C.Label>
           Título:
-          <input
+          <C.Input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
           />
-        </label>
+        </C.Label>
 
-
-        <label>
+        <C.Label>
           Nome Fantasia:
-          <input
+          <C.Input
             type="text"
             name="nomeFantasia"
             value={formData.nomeFantasia}
             onChange={handleChange}
           />
-        </label>
+        </C.Label>
 
-        <label>
+        <C.Label>
           Data de Inicialização:
-          <input
+          <C.Input
             type="date"
             name="initialDate"
             value={formData.initialDate}
             onChange={handleChange}
           />
-        </label>
+        </C.Label>
 
-        <label>
+        <C.Label>
           Atividade:
-          <input
+          <C.Input
             type="text"
             name="atividade"
             value={formData.atividade}
             onChange={handleChange}
           />
-        </label>
+        </C.Label>
 
-        <label>
+        <C.Label>
           Endereço:
-          <input
+          <C.Input
             type="text"
             name="endereco"
             value={formData.endereco}
             onChange={handleChange}
           />
-        </label>
+        </C.Label>
 
-        <label>
+        <C.Label>
           Telefone 1:
-          <input
+          <C.Input
             type="text"
             name="tel1"
             value={formData.tel1}
             onChange={handleChange}
           />
-        </label>
+        </C.Label>
 
-        <label>
+        <C.Label>
           Telefone 2:
-          <input
+          <C.Input
             type="text"
             name="tel2"
             value={formData.tel2}
             onChange={handleChange}
           />
-        </label>
+        </C.Label>
 
-        <label>
+        <C.Label>
           Email:
-          <input
+          <C.Input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
           />
-        </label>
+        </C.Label>
 
-        <label>
+        <C.Label>
           Situação Cadastral:
-          <input
+          <C.Input
             type="text"
             name="situacaoCadastral"
             value={formData.situacaoCadastral}
             onChange={handleChange}
           />
-        </label>
+        </C.Label>
 
         <C.Footer>
           <C.AddToCartButton type="submit">Salvar</C.AddToCartButton>
