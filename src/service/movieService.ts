@@ -1,53 +1,43 @@
 // src/services/movieService.ts
 import axios from 'axios';
 
-const API_URL = 'https://wefit-movies.vercel.app/api/movies';
+
 const CNPJ_API_URL = 'https://brasilapi.com.br/api/cnpj/v1/';
 
-export interface Movie {
-    id: number;
-    title: string;
-    image: string;
-}
 
-export const fetchMovies = async (): Promise<Movie[]> => {
-    try {
-        const response = await axios.get<Movie[]>(API_URL);
-        console.log("datass", response.data);
-        return response.data;
-    } catch (error) {
-        console.error("Erro ao buscar filmes:", error);
-        throw error; // Lide com o erro conforme necessário
-    }
-};
 
 export interface CartItem {
     id: number;
     title: string;
-    price: number;
-    image: string;
-    nomeFantasia:string
+    nomeFantasia: string;
+    initialDate: string;
+    atividade: string;
+    endereco: string;
+    tel1: string;
+    tel2: string;
+    email: string;
+    situacaoCadastral: string;
 }
 
-let arrayBuy: CartItem[] = []; // Estado local para simular armazenamento
-
 export const addToCart = (item: CartItem) => {
-    arrayBuy.push(item);
-    console.log(arrayBuy); // Para verificar o array atualizado
-    return arrayBuy; // Retorna o array atualizado, se necessário
+    const cart = getCartItems();
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    console.log(cart);
+    return cart;
 };
 
-export const getCartItems = () => {
-    return arrayBuy; // Retorna os itens do carrinho
+export const getCartItems = (): CartItem[] => {
+    const cart = localStorage.getItem('cart');
+    return cart ? JSON.parse(cart) : [];
 };
 
-// Função para buscar informações de CNPJ
 export const fetchCNPJ = async (cnpj: string): Promise<any> => {
     try {
         const response = await axios.get(`${CNPJ_API_URL}${cnpj}`);
         return response.data;
     } catch (error) {
         console.error("Erro ao buscar CNPJ:", error);
-        throw error; // Lide com o erro conforme necessário
+        throw error;
     }
 };

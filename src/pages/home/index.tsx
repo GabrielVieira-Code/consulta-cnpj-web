@@ -28,7 +28,7 @@ export const Home: React.FC = () => {
     return (
         <C.Container>
             <C.Nav>
-                <div>WeMovies</div>
+                <div>ConsultaCNPJ</div>
                 <NavLink to="/shoppingCart" style={{ textDecoration: 'none', color: 'white', cursor: 'pointer' }}>
                     <C.CartIcon />
                 </NavLink>

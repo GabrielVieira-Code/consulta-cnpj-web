@@ -1,7 +1,7 @@
 // src/pages/category/MovieCard.tsx
 import React, { useState } from 'react';
 import * as C from "./stiled"; // Corrigi o caminho para "styled"
-import { CartItem } from "../../types/CardType";
+import { CartItem,addToCart  } from "../../service/movieService";
 
 interface MovieCardProps {
   id: number;
@@ -45,10 +45,35 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     setFormData({ ...formData, [name]: value });
   };
 
+
+
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Dados do formulário:', formData);
+
+    const cartItem: CartItem = {
+      id: Math.floor(Math.random() * 1000), // Gerar um ID fictício
+      title: formData.title,
+      initialDate:formData.initialDate,
+      nomeFantasia: formData.nomeFantasia,
+      atividade: formData.atividade,
+      tel1: formData.tel1,
+      tel2: formData.tel2,
+      endereco: formData.endereco,
+      email: formData.email,
+      situacaoCadastral: formData.situacaoCadastral,
+
+
+
+
+
+    };
+
+    addToCart(cartItem);
   };
+
+
 
   return (
     <C.Card>

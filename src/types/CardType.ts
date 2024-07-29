@@ -1,15 +1,14 @@
 // Exemplo de definição do tipo CartItem
 export interface CartItem {
-    id: number;
-    title: string;
-    nomeFantasia:string;
-    initialDate:string;
-    endereco:string;
-    situaçaoCadastral:string;
-    atividade:string;
-    tel1:string;
-    tel2:string;
-
-    email:string
+  id: number;
+  title: string;
+  nomeFantasia: string;
+  initialDate: string;
+  atividade: string;
+  endereco: string;
+  tel1: string;
+  tel2: string;
+  email: string;
+  situacaoCadastral: string;
   }
   
