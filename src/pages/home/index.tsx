@@ -1,12 +1,11 @@
-// src/pages/ShoppingCart/index.tsx
-import React, { useState } from 'react';
-import { NavLink } from "react-router-dom";
-import { MovieCard } from "../category/index";;
-import * as C from "./stiled";
+// src/pages/home/index.tsx
+import React, { useState } from 'react'; // Importações no topo do arquivo
+import { NavLink } from 'react-router-dom';
+import { MovieCard } from '../category/index';
+import * as C from './stiled';
 import { fetchCNPJ } from '../../service/movieService';
 
-
-
+// Componente funcional Home
 export const Home: React.FC = () => {
     const [cnpj, setCnpj] = useState('');
     const [cnpjData, setCnpjData] = useState<any>(null); // Armazena os dados do CNPJ
@@ -34,23 +33,24 @@ export const Home: React.FC = () => {
                 </NavLink>
             </C.Nav>
             <C.SearchSection>
-                <C.SearchInput
-                    type="text"
-                    value={cnpj}
-                    onChange={(e) => setCnpj(e.target.value)}
-                    placeholder="Pesquise o CNPJ..."
-                    onKeyDown={handleCnpjSearch}
-                />
+                <div style={{ flex: 1 }}>
+                    <C.SearchInput
+                        type="text"
+                        value={cnpj}
+                        onChange={(e) => setCnpj(e.target.value)}
+                        placeholder="Pesquise o CNPJ..."
+                        onKeyDown={handleCnpjSearch}
+                        />
+                </div>
             </C.SearchSection>
             <C.Content>
+                    
                 {error && <div>{error}</div>}
                 {cnpjData && (
                     <MovieCard
-               
                         key={cnpjData.cnpj}
                         id={0} // ID fictício, ajuste conforme necessário
                         email={cnpjData.email}
-                        
                         tel2={cnpjData.ddd_telefone_2}
                         tel1={cnpjData.ddd_telefone_1}
                         endereco={cnpjData.logradouro}
@@ -59,11 +59,11 @@ export const Home: React.FC = () => {
                         initialDate={cnpjData.data_inicio_atividade}
                         nomeFantasia={cnpjData.nome_fantasia}
                         title={cnpjData.razao_social || 'Nome não disponível'}
-
                     />
                 )}
-                
             </C.Content>
         </C.Container>
     );
 };
+
+export default Home;

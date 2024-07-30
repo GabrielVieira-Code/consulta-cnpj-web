@@ -1,7 +1,7 @@
 // src/pages/category/MovieCard.tsx
 import React, { useState } from 'react';
-import * as C from "./stiled"; // Corrigi o caminho para "styled"
-import { CartItem,addToCart  } from "../../service/movieService";
+import * as C from './stiled'; // Corrigido o caminho para "styled"
+import { CartItem, addToCart } from '../../service/movieService';
 
 interface MovieCardProps {
   id: number;
@@ -45,9 +45,6 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     setFormData({ ...formData, [name]: value });
   };
 
-
-
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Dados do formulário:', formData);
@@ -55,7 +52,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     const cartItem: CartItem = {
       id: Math.floor(Math.random() * 1000), // Gerar um ID fictício
       title: formData.title,
-      initialDate:formData.initialDate,
+      initialDate: formData.initialDate,
       nomeFantasia: formData.nomeFantasia,
       atividade: formData.atividade,
       tel1: formData.tel1,
@@ -63,20 +60,17 @@ export const MovieCard: React.FC<MovieCardProps> = ({
       endereco: formData.endereco,
       email: formData.email,
       situacaoCadastral: formData.situacaoCadastral,
-
-
-
-
-
     };
 
     addToCart(cartItem);
   };
 
-
-
   return (
     <C.Card>
+      <C.InfoContainer>
+        <C.InfoLine>Informação Linha 1</C.InfoLine>
+        <C.InfoLine>Informação Linha 2</C.InfoLine>
+      </C.InfoContainer>
       <form onSubmit={handleSubmit}>
         <C.Title>Informações</C.Title>
 

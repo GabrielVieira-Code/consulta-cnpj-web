@@ -19,15 +19,20 @@ export const Card = styled.div`
   }
 `;
 
-// Estilo para a imagem do filme
-export const MovieImage = styled.img`
-  width: 100%;
-  border-radius: 8px;
-  transition: opacity 0.3s ease;
+// Estilo para o container das informações acima do formulário
+export const InfoContainer = styled.div`
+  margin-bottom: 20px; /* Espaçamento abaixo do container de informações */
+  padding: 10px;
+  background-color: #f9f9f9; /* Cor de fundo do container */
+  border-radius: 8px; /* Bordas arredondadas do container */
+  border: 1px solid #ddd; /* Borda sutil */
+`;
 
-  &:hover {
-    opacity: 0.9; /* Efeito de desvanecimento ao passar o mouse */
-  }
+// Estilo para a linha de informação
+export const InfoLine = styled.div`
+  margin-bottom: 10px; /* Espaçamento entre as linhas */
+  font-size: 16px; /* Tamanho da fonte */
+  color: #333; /* Cor do texto */
 `;
 
 // Estilo para o título
@@ -36,13 +41,6 @@ export const Title = styled.h2`
   font-weight: 600; /* Texto em negrito */
   margin: 12px 0;
   color: #333; /* Cor do texto */
-`;
-
-// Estilo para o preço
-export const Price = styled.p`
-  font-size: 16px;
-  color: #007bff; /* Cor mais destacada */
-  margin: 0;
 `;
 
 // Estilo para o footer
