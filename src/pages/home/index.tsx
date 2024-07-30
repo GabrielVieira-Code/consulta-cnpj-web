@@ -32,19 +32,18 @@ export const Home: React.FC = () => {
                     <C.CartIcon />
                 </NavLink>
             </C.Nav>
-            <C.SearchSection>
-                <div style={{ flex: 1 }}>
+            <C.Banner>
+                <C.SearchSection>
                     <C.SearchInput
                         type="text"
                         value={cnpj}
                         onChange={(e) => setCnpj(e.target.value)}
                         placeholder="Pesquise o CNPJ..."
                         onKeyDown={handleCnpjSearch}
-                        />
-                </div>
-            </C.SearchSection>
+                    />
+                </C.SearchSection>
+            </C.Banner>
             <C.Content>
-                    
                 {error && <div>{error}</div>}
                 {cnpjData && (
                     <MovieCard

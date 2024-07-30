@@ -1,6 +1,7 @@
-// src/pages/ShoppingCart/styled.ts
+// src/pages/home/styled.ts
 import styled from 'styled-components';
 import { FaShoppingCart } from 'react-icons/fa';
+import bannerImage from '../../images/banner.jpg'; // Atualize o caminho conforme necessário
 
 export const Container = styled.div`
   padding: 20px;
@@ -9,19 +10,6 @@ export const Container = styled.div`
   
   @media (max-width: 375px) {
     padding: 10px;
-  }
-`;
-
-export const Content = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 20px;
-  width: 100%; /* Garante que o conteúdo ocupe toda a largura disponível */
-  
-  @media (max-width: 768px) {
-    margin-top: 10px;
   }
 `;
 
@@ -41,19 +29,32 @@ export const CartIcon = styled(FaShoppingCart)`
   }
 `;
 
+export const Banner = styled.div`
+  width: 100%; /* Largura total da tela */
+  height:750px; /* Altura do banner */
+  background: url(${bannerImage}) no-repeat center center; /* Usar a imagem importada */
+  background-size: cover; /* Faz com que a imagem cubra todo o banner */
+  position: relative;
+  margin-bottom: 20px; /* Espaço entre o banner e o conteúdo abaixo */
+`;
+
 export const SearchSection = styled.div`
   display: flex;
-  gap: 20px; /* Espaçamento entre o card e o formulário */
-  align-items: flex-start;
-  margin: 20px 0;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza o conteúdo dentro do banner */
   background-color: rgba(0, 0, 0, 0.7); /* Preto opaco */
   padding: 20px;
   border-radius: 8px; /* Opcional: Adiciona bordas arredondadas */
   color: white;
+  width: 50%; /* O input ocupará metade da largura do banner */
 `;
 
 export const SearchInput = styled.input`
-  flex: 1; /* Faz o input ocupar o espaço restante */
+  width: 100%; /* O input ocupa toda a largura da SearchSection */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc; /* Borda fina adicionada */
@@ -65,8 +66,15 @@ export const SearchInput = styled.input`
   }
 `;
 
-
-
-
-
-
+export const Content = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  width: 100%; /* Garante que o conteúdo ocupe toda a largura disponível */
+  
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
+`;
