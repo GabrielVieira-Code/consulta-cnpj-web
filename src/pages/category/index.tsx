@@ -14,6 +14,10 @@ interface MovieCardProps {
   tel2: string;
   email: string;
   situacaoCadastral: string;
+  nomeSocio: string;  // Novo campo
+  faixaEtaria: string; // Novo campo
+  qualificacaoSocio: string; // Novo campo
+  representanteLegal: string; // Novo campo
 }
 
 export const MovieCard: React.FC<MovieCardProps> = ({
@@ -27,7 +31,27 @@ export const MovieCard: React.FC<MovieCardProps> = ({
   tel2,
   email,
   situacaoCadastral,
+  nomeSocio,
+  faixaEtaria,
+  qualificacaoSocio,
+  representanteLegal,
+  
 }) => {
+  console.log("Dados no MovieCard:", {
+    title,
+    nomeFantasia,
+    initialDate,
+    atividade,
+    endereco,
+    tel1,
+    tel2,
+    email,
+    situacaoCadastral,
+    nomeSocio,
+    faixaEtaria,
+    qualificacaoSocio,
+    representanteLegal,
+});
   const [formData, setFormData] = useState({
     title,
     nomeFantasia,
@@ -38,6 +62,10 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     tel2,
     email,
     situacaoCadastral,
+    nomeSocio, // Novo campo
+    faixaEtaria, // Novo campo
+    qualificacaoSocio, // Novo campo
+    representanteLegal, // Novo campo
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,6 +88,10 @@ export const MovieCard: React.FC<MovieCardProps> = ({
       endereco: formData.endereco,
       email: formData.email,
       situacaoCadastral: formData.situacaoCadastral,
+      nomeSocio: formData.nomeSocio,  // Novo campo
+  faixaEtaria: formData.faixaEtaria, // Novo campo
+  qualificacaoSocio: formData.qualificacaoSocio, // Novo campo
+  representanteLegal: formData.representanteLegal // Novo campo
     };
 
     addToCart(cartItem);
@@ -68,8 +100,10 @@ export const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <C.Card>
       <C.InfoContainer>
-        <C.InfoLine>Informação Linha 1</C.InfoLine>
-        <C.InfoLine>Informação Linha 2</C.InfoLine>
+      <C.InfoLine>Nome do Sócio: {formData.nomeSocio}</C.InfoLine>
+        <C.InfoLine>Faixa Etária: {formData.faixaEtaria}</C.InfoLine>
+        <C.InfoLine>Qualificação do Sócio: {formData.qualificacaoSocio}</C.InfoLine>
+        <C.InfoLine>Representante Legal: {formData.representanteLegal}</C.InfoLine>
       </C.InfoContainer>
       <form onSubmit={handleSubmit}>
         <C.Title>Informações</C.Title>

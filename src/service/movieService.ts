@@ -17,6 +17,11 @@ export interface CartItem {
     tel2: string;
     email: string;
     situacaoCadastral: string;
+    nomeSocio: string;  // Novo campo
+  faixaEtaria: string; // Novo campo
+  qualificacaoSocio: string; // Novo campo
+  representanteLegal: string; // Novo campo
+    
 }
 
 export const addToCart = (item: CartItem) => {

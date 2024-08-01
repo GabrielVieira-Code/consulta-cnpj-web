@@ -23,6 +23,7 @@ export const Home: React.FC = () => {
             }
         }
     };
+    const qsaData = cnpjData?.qsa?.[0] || {};
 
     return (
         <C.Container>
@@ -58,6 +59,15 @@ export const Home: React.FC = () => {
                         initialDate={cnpjData.data_inicio_atividade}
                         nomeFantasia={cnpjData.nome_fantasia}
                         title={cnpjData.razao_social || 'Nome não disponível'}
+                        nomeSocio={qsaData.nome_socio}  // Acesso ao nome do sócio
+                        faixaEtaria={qsaData.faixa_etaria}  // Acesso à faixa etária
+                        qualificacaoSocio={qsaData.qualificacao_socio}  // Acesso à qualificação do sócio
+                        representanteLegal={qsaData.qualificacao_representante_legal}  // Acesso à qualificação do representante legal
+
+
+ 
+
+                       
                     />
                 )}
             </C.Content>
