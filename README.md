@@ -1,6 +1,6 @@
 # Consulta CNPJ Web
 
-**Consulta CNPJ Web** é uma aplicação React para consultar e gerenciar informações sobre CNPJ. Este projeto é uma aplicação web moderna que utiliza diversas bibliotecas e ferramentas para criar uma experiência de usuário rica e responsiva.
+**Consulta CNPJ Web** é uma aplicação React para consultar e gerenciar informações sobre CNPJ.
 
 ## Tecnologias e Dependências
 
@@ -22,5 +22,15 @@ Para começar a trabalhar com o projeto, siga estas etapas:
 1. **Clone o repositório:**
 
    ```bash
-   git clone <URL_DO_REPOSITORIO>
+   git clone <https://github.com/GabrielVieira-Code/consulta-cnpj-web.git>
    cd consulta-cnpj-web
+
+2. **Instalaçao do projeto**
+
+  npm install
+
+2. **Rodando a aplicaçao**
+
+  npm start
+  
+
