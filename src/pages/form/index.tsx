@@ -1,10 +1,9 @@
-// src/pages/category/MovieCard.tsx
 import React, { useState } from 'react';
-import * as C from './stiled'; // Corrigido o caminho para "styled"
-import { CartItem, addToCart } from '../../service/movieService';
+import * as C from './stiled'; 
+import { CnpjData, addToCart } from '../../service/ConsultaService';
 import { FaUser } from 'react-icons/fa';
 
-interface MovieCardProps {
+interface CnpjProps {
   id: number;
   title: string;
   nomeFantasia: string;
@@ -15,13 +14,13 @@ interface MovieCardProps {
   tel2: string;
   email: string;
   situacaoCadastral: string;
-  nomeSocio: string;  // Novo campo
-  faixaEtaria: string; // Novo campo
-  qualificacaoSocio: string; // Novo campo
-  representanteLegal: string; // Novo campo
+  nomeSocio: string;  
+  faixaEtaria: string; 
+  qualificacaoSocio: string; 
+  representanteLegal: string; 
 }
 
-export const MovieCard: React.FC<MovieCardProps> = ({
+export const FormComponent: React.FC<CnpjProps> = ({
   id,
   title,
   nomeFantasia,
@@ -62,7 +61,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     e.preventDefault();
     console.log('Dados do formulário:', formData);
 
-    const cartItem: CartItem = {
+    const cartItem: CnpjData = {
       id: Math.floor(Math.random() * 1000), // Gerar um ID fictício
       title: formData.title,
       initialDate: formData.initialDate,
@@ -80,17 +79,32 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     };
 
     addToCart(cartItem);
+
+    // Limpar o formulário
+    setFormData({
+      title: '',
+      nomeFantasia: '',
+      initialDate: '',
+      atividade: '',
+      endereco: '',
+      tel1: '',
+      tel2: '',
+      email: '',
+      situacaoCadastral: '',
+      nomeSocio: '',
+      faixaEtaria: '',
+      qualificacaoSocio: '',
+      representanteLegal: '',
+    });
   };
 
   return (
     <C.Card>
       <C.InfoContainer>
-      <C.IconWrapper>
-            <FaUser />
-          </C.IconWrapper>
-          <C.InfoText>
-            Dados do Sócio
-          </C.InfoText>
+        <C.IconWrapper>
+          <FaUser />
+        </C.IconWrapper>
+        <C.InfoText>Dados do Sócio</C.InfoText>
         <C.InfoLine>
           <C.InfoLineTitle>Nome do Sócio:</C.InfoLineTitle> {formData.nomeSocio}
         </C.InfoLine>

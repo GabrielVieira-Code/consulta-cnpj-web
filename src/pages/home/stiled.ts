@@ -18,15 +18,24 @@ export const Nav = styled.nav`
   color: white;
   background: #003366;
   height: 7vh;
-  width: 100%; /* Garantir largura de 100% */
-  box-sizing: border-box; /* Garantir que padding e bordas não afetem a largura total */
- 
-   @media (max-width: 375px) {
-      width: 100%; /* Garantir largura de 100% */
-      
+  width: 100%;
+  box-sizing: border-box;
 
+  /* Adicionar padding à esquerda para deslocar o texto para a direita */
+  padding-left: 20px;
+
+  /* Centralizar o conteúdo verticalmente */
+  display: flex;
+  align-items: center;
+
+  /* Estilo do texto do logo */
+  .logo {
+    font-size: 1.5rem; /* Ajuste o tamanho da fonte conforme necessário */
+    font-weight: bold; /* Fonte mais grossa */
+    margin-right: auto; /* Garante que o texto seja alinhado à esquerda */
   }
 `;
+
 
 export const CartIcon = styled(FaShoppingCart)`
   font-size: 24px;

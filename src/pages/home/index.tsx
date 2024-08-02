@@ -1,21 +1,19 @@
-// src/pages/home/index.tsx
-import React, { useState } from 'react'; // Importações no topo do arquivo
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { MovieCard } from '../form/index';
+import { FormComponent } from '../form/index';
 import * as C from './stiled';
-import { fetchCNPJ } from '../../service/movieService';
+import { fetchCNPJ } from '../../service/ConsultaService';
 
-// Componente funcional Home
 export const Home: React.FC = () => {
     const [cnpj, setCnpj] = useState('');
-    const [cnpjData, setCnpjData] = useState<any>(null); // Armazena os dados do CNPJ
+    const [cnpjData, setCnpjData] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
 
     const handleCnpjSearch = async (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             try {
-                setError(null); // Limpar erros anteriores
-                const cleanedCnpj = cnpj.replace(/\D/g, ''); // Remove caracteres não numéricos
+                setError(null);
+                const cleanedCnpj = cnpj.replace(/\D/g, '');
                 const data = await fetchCNPJ(cleanedCnpj);
                 setCnpjData(data);
             } catch (error) {
@@ -28,7 +26,7 @@ export const Home: React.FC = () => {
     return (
         <C.Container>
             <C.Nav>
-                <div>ConsultaCNPJ</div>
+                <div className="logo">ConsultaCNPJ</div>
                 <NavLink to="/shoppingCart" style={{ textDecoration: 'none', color: 'white', cursor: 'pointer' }}>
                     <C.CartIcon />
                 </NavLink>
@@ -47,9 +45,9 @@ export const Home: React.FC = () => {
             <C.Content>
                 {error && <div>{error}</div>}
                 {cnpjData && (
-                    <MovieCard
+                    <FormComponent
                         key={cnpjData.cnpj}
-                        id={0} // ID fictício, ajuste conforme necessário
+                        id={0} 
                         email={cnpjData.email}
                         tel2={cnpjData.ddd_telefone_2}
                         tel1={cnpjData.ddd_telefone_1}
@@ -59,15 +57,10 @@ export const Home: React.FC = () => {
                         initialDate={cnpjData.data_inicio_atividade}
                         nomeFantasia={cnpjData.nome_fantasia}
                         title={cnpjData.razao_social || 'Nome não disponível'}
-                        nomeSocio={qsaData.nome_socio}  // Acesso ao nome do sócio
-                        faixaEtaria={qsaData.faixa_etaria}  // Acesso à faixa etária
-                        qualificacaoSocio={qsaData.qualificacao_socio}  // Acesso à qualificação do sócio
-                        representanteLegal={qsaData.qualificacao_representante_legal}  // Acesso à qualificação do representante legal
-
-
- 
-
-                       
+                        nomeSocio={qsaData.nome_socio}
+                        faixaEtaria={qsaData.faixa_etaria}
+                        qualificacaoSocio={qsaData.qualificacao_socio}
+                        representanteLegal={qsaData.qualificacao_representante_legal}
                     />
                 )}
             </C.Content>

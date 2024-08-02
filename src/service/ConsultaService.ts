@@ -1,7 +1,7 @@
 // src/services/movieService.ts
 import axios from 'axios';
 const CNPJ_API_URL = 'https://brasilapi.com.br/api/cnpj/v1/';
-export interface CartItem {
+export interface CnpjData {
     id: number;
     title: string;
     nomeFantasia: string;
@@ -19,7 +19,7 @@ export interface CartItem {
     
 }
 
-export const addToCart = (item: CartItem) => {
+export const addToCart = (item: CnpjData) => {
     const cart = getCartItems();
     cart.push(item);
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -27,7 +27,7 @@ export const addToCart = (item: CartItem) => {
     return cart;
 };
 
-export const getCartItems = (): CartItem[] => {
+export const getCartItems = (): CnpjData[] => {
     const cart = localStorage.getItem('cart');
     return cart ? JSON.parse(cart) : [];
 };
