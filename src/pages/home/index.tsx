@@ -1,7 +1,7 @@
 // src/pages/home/index.tsx
 import React, { useState } from 'react'; // Importações no topo do arquivo
 import { NavLink } from 'react-router-dom';
-import { MovieCard } from '../category/index';
+import { MovieCard } from '../form/index';
 import * as C from './stiled';
 import { fetchCNPJ } from '../../service/movieService';
 

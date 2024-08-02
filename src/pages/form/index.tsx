@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import * as C from './stiled'; // Corrigido o caminho para "styled"
 import { CartItem, addToCart } from '../../service/movieService';
+import { FaUser } from 'react-icons/fa';
 
 interface MovieCardProps {
   id: number;
@@ -21,8 +22,8 @@ interface MovieCardProps {
 }
 
 export const MovieCard: React.FC<MovieCardProps> = ({
-  title,
   id,
+  title,
   nomeFantasia,
   initialDate,
   atividade,
@@ -35,9 +36,8 @@ export const MovieCard: React.FC<MovieCardProps> = ({
   faixaEtaria,
   qualificacaoSocio,
   representanteLegal,
-  
 }) => {
-  console.log("Dados no MovieCard:", {
+  const [formData, setFormData] = useState({
     title,
     nomeFantasia,
     initialDate,
@@ -51,21 +51,6 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     faixaEtaria,
     qualificacaoSocio,
     representanteLegal,
-});
-  const [formData, setFormData] = useState({
-    title,
-    nomeFantasia,
-    initialDate,
-    atividade,
-    endereco,
-    tel1,
-    tel2,
-    email,
-    situacaoCadastral,
-    nomeSocio, // Novo campo
-    faixaEtaria, // Novo campo
-    qualificacaoSocio, // Novo campo
-    representanteLegal, // Novo campo
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,10 +73,10 @@ export const MovieCard: React.FC<MovieCardProps> = ({
       endereco: formData.endereco,
       email: formData.email,
       situacaoCadastral: formData.situacaoCadastral,
-      nomeSocio: formData.nomeSocio,  // Novo campo
-  faixaEtaria: formData.faixaEtaria, // Novo campo
-  qualificacaoSocio: formData.qualificacaoSocio, // Novo campo
-  representanteLegal: formData.representanteLegal // Novo campo
+      nomeSocio: formData.nomeSocio,
+      faixaEtaria: formData.faixaEtaria,
+      qualificacaoSocio: formData.qualificacaoSocio,
+      representanteLegal: formData.representanteLegal,
     };
 
     addToCart(cartItem);
@@ -100,10 +85,24 @@ export const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <C.Card>
       <C.InfoContainer>
-      <C.InfoLine>Nome do Sócio: {formData.nomeSocio}</C.InfoLine>
-        <C.InfoLine>Faixa Etária: {formData.faixaEtaria}</C.InfoLine>
-        <C.InfoLine>Qualificação do Sócio: {formData.qualificacaoSocio}</C.InfoLine>
-        <C.InfoLine>Representante Legal: {formData.representanteLegal}</C.InfoLine>
+      <C.IconWrapper>
+            <FaUser />
+          </C.IconWrapper>
+          <C.InfoText>
+            Dados do Sócio
+          </C.InfoText>
+        <C.InfoLine>
+          <C.InfoLineTitle>Nome do Sócio:</C.InfoLineTitle> {formData.nomeSocio}
+        </C.InfoLine>
+        <C.InfoLine>
+          <C.InfoLineTitle>Faixa Etária:</C.InfoLineTitle> {formData.faixaEtaria}
+        </C.InfoLine>
+        <C.InfoLine>
+          <C.InfoLineTitle>Qualificação do Sócio:</C.InfoLineTitle> {formData.qualificacaoSocio}
+        </C.InfoLine>
+        <C.InfoLine>
+          <C.InfoLineTitle>Representante Legal:</C.InfoLineTitle> {formData.representanteLegal}
+        </C.InfoLine>
       </C.InfoContainer>
       <form onSubmit={handleSubmit}>
         <C.Title>Informações</C.Title>
@@ -199,7 +198,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
         </C.Label>
 
         <C.Footer>
-          <C.AddToCartButton type="submit">Salvar</C.AddToCartButton>
+          <C.AddToCartButton type="submit">Enviar CNPJ editado</C.AddToCartButton>
         </C.Footer>
       </form>
     </C.Card>

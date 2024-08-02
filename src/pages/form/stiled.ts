@@ -1,5 +1,6 @@
 // src/pages/category/styled.ts
 import styled from 'styled-components';
+import { FaUser } from 'react-icons/fa'; // Importa o ícone de usuário
 
 // Estilo para o Card
 export const Card = styled.div`
@@ -18,6 +19,26 @@ export const Card = styled.div`
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra mais acentuada */
   }
 `;
+// Estilo para o ícone do usuário
+export const IconWrapper = styled.div`
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+  color: #007bff; /* Cor do ícone */
+  font-size: 18px; /* Tamanho do ícone */
+`;
+
+// Estilo para o texto de informações
+export const InfoText = styled.p`
+  font-weight: bold; /* Texto em negrito */
+  display: inline; /* Permite que o texto fique ao lado do ícone */
+  margin: 0; /* Remove margens padrão do parágrafo */
+`;
+
+// Outros estilos
+// ... (os estilos existentes permanecem inalterados)
+
+
 
 // Estilo para o container das informações acima do formulário
 export const InfoContainer = styled.div`
@@ -33,6 +54,12 @@ export const InfoLine = styled.div`
   margin-bottom: 10px; /* Espaçamento entre as linhas */
   font-size: 16px; /* Tamanho da fonte */
   color: #333; /* Cor do texto */
+`;
+
+// Estilo para o título dentro de InfoLine
+export const InfoLineTitle = styled.span`
+  font-weight: bold; /* Texto em negrito */
+  display: block; /* Faz com que o título ocupe a largura total disponível */
 `;
 
 // Estilo para o título

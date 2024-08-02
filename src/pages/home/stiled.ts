@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 import { FaShoppingCart } from 'react-icons/fa';
-import bannerImage from '../../images/banner.jpg'; // Atualize o caminho conforme necessário
+import bannerImage from '../../images/banner.jpg'; // Caminho da imagem padrão
+import bannerImageSmall from '../../images/bannerMobile.jpg'; // Caminho da nova imagem para telas pequenas
 
 export const Container = styled.div`
-  padding: 0; /* Remove padding que pode afetar o banner */
+  padding: 0;
   background-color: #5563e6;
-  min-height: 100vh; /* Garante que o contêiner tenha pelo menos 100% da altura da viewport */
-  
-  @media (max-width: 375px) {
-    padding: 10px;
-  }
+  min-height: 100vh;
+
+ 
 `;
 
 export const Nav = styled.nav`
@@ -17,8 +16,16 @@ export const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   color: white;
-  background:#003366;
-  height: 7vh; /* Ajusta a altura do nav */
+  background: #003366;
+  height: 7vh;
+  width: 100%; /* Garantir largura de 100% */
+  box-sizing: border-box; /* Garantir que padding e bordas não afetem a largura total */
+ 
+   @media (max-width: 375px) {
+      width: 100%; /* Garantir largura de 100% */
+      
+
+  }
 `;
 
 export const CartIcon = styled(FaShoppingCart)`
@@ -31,40 +38,56 @@ export const CartIcon = styled(FaShoppingCart)`
 `;
 
 export const Banner = styled.div`
-  width: 100vw; /* Largura total da viewport */
-  height: 750px; /* Altura do banner */
-  background: url(${bannerImage}) no-repeat center center; /* Usar a imagem importada */
-  background-size: cover; /* Faz com que a imagem cubra todo o banner */
+  width: 100vw; /* Garantir largura total da viewport */
+  height: 750px;
+  background: url(${bannerImage}) no-repeat center center;
+  background-size: cover;
   position: relative;
-  margin: 0; /* Remove margens, se houver */
-  padding: 0; /* Remove padding, se houver */
-  box-sizing: border-box; /* Garante que o box model esteja correto */
-  overflow: hidden; /* Garante que nada saia dos limites do banner */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  @media (max-width: 978px) {
+    background: url(${bannerImageSmall}) no-repeat center center; /* Troca de imagem para telas pequenas */
+    background-size: cover;
+    width: 100vw; /* Garantir largura total da viewport */
+  height: 350px;
+ 
+  background-size: cover;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  }
+
+  
 `;
 
 export const SearchSection = styled.div`
   display: flex;
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-  align-items: center; /* Centraliza o conteúdo verticalmente */
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centraliza o conteúdo dentro do banner */
-  background-color: rgba(0, 0, 0, 0.7); /* Preto opaco */
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 3px;
-  border-radius: 6px; /* Opcional: Adiciona bordas arredondadas */
+  border-radius: 6px;
   color: white;
-  width: 50%; /* O input ocupará metade da largura do banner */
+  width: 50%;
 `;
 
 export const SearchInput = styled.input`
-  width: 100%; /* O input ocupa toda a largura da SearchSection */
+  width: 100%;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc; /* Borda fina adicionada */
+  border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* Garante que o padding não afete o tamanho total */
-  text-align: center; /* Centraliza o texto e o placeholder horizontalmente */
+  box-sizing: border-box;
+  text-align: center;
   
   &::placeholder {
     color: #ccc;
@@ -77,9 +100,16 @@ export const Content = styled.div`
   justify-content: center;
   gap: 16px;
   margin-top: 20px;
-  width: 100%; /* Garante que o conteúdo ocupe toda a largura disponível */
+  width: 100%;
   
   @media (max-width: 768px) {
     margin-top: 10px;
+  width: 100%;
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+
   }
 `;
